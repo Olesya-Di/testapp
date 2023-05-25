@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+//mport Container from 'react-bootstrap/Container';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import FilterLikesPage from './pages/FilterLikesPage';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  <>
+
+
+  <div className='container col-12'>
+    <div className='container pt-4'>
+      <Router>
+        <Routes>
+          <Route path='/' exact element = {<Home/>} />
+          <Route path='/filter-likes-page' element = {<FilterLikesPage/>} />
+        </Routes>
+      </Router>    
     </div>
-  );
+  </div>
+  </>
+  )
 }
 
 export default App;
