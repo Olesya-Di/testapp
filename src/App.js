@@ -1,6 +1,6 @@
 import './App.css';
 import React, {useState, useEffect} from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import FilterLikesPage from './pages/FilterLikesPage';
 
@@ -20,7 +20,7 @@ const App = () => {
     .catch(error => console.log(error))
 
   }, []);
-  
+
   return (
   <>
 
