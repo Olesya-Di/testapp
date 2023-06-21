@@ -10,7 +10,7 @@ const Home = (props) => {
   const clickBtnAllHeart = () => {
     navigate("/filter-likes-page");
   }
- 
+
   const handleLike = (cardId) => {
     if (props.likedCardsIds.includes(cardId)) {
       props.setLikedCardsIds(props.likedCardsIds.filter(card => card !== cardId));
