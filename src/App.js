@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import FilterLikesPage from './pages/FilterLikesPage';
 
 
+
+
 const App = () => {
   
   const [saeAnimals, setSaeAnimals] = useState([]);
@@ -23,9 +25,12 @@ const App = () => {
 
   return (
   <>
-
-    <section className='container col-12'>
-      <section className='container pt-4'>
+  {/* <img src={'./../public/img/cross.svg'}/>
+  <img src={'./img/cross.svg'}/>
+  <img src={'./../public/img/shells.png'}/>
+  {require(`../../assets/pic-${j + 1}.jpg`).default} */}
+    <section className='bodyContainer'>
+      <section className='container'>
         <Router>
           <Routes>
             <Route path='/' exact element = {<Home

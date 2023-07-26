@@ -33,34 +33,42 @@ const Card = (props) => {
         <>
         
         {showComponent && (
-            <div className="col-sm-3 mb-4 card"> 
-                <button 
-                    type="button" 
-                    className="btn btnHeart"
-                    onClick = {clickBtnHeart}
-                >
-                    {pressed ?
-                        <BsBalloonHeartFill
-                            color="#c36164"
-                            size="50px"
-                        />:
-                        <BsBalloonHeart 
-                            size="50px"
-                        />
-                    }
-                </button>
+            <section className="card"> 
+                <section className="btnBlock"> 
+                    <button 
+                        type="button" 
+                        className="btn btnHeart"
+                        onClick = {clickBtnHeart}
+                    >
+                        {pressed ?
+                            <BsBalloonHeartFill
+                                onMouseOver={({target})=>target.style.color="white"}
+                                onMouseOut={({target})=>target.style.color="#c36164"}
+                                color="#c36164"
+                                size="30px"
+                                className="iconHeartFull"
+                            />:
+                            <BsBalloonHeart 
+                                onMouseOver={({target})=>target.style.color="white"}
+                                onMouseOut={({target})=>target.style.color="#c36164"}
+                                size="30px"
+                            />
+                        }
+                    </button>
 
-                <button
-                    type="button"
-                    className="btn btnDel"
-                    onClick={clickBtnDel}
-                >
-                    <RiDeleteBin6Line
-                        color="#005f90"
-                        size="50px"
-                    />
-                </button>
-                
+                    <button
+                        type="button"
+                        className="btn btnDel"
+                        onClick={clickBtnDel}
+                    >
+                        <RiDeleteBin6Line
+                            onMouseOver={({target})=>target.style.color="white"}
+                            onMouseOut={({target})=>target.style.color="#005f90"}
+                            color="#005f90"
+                            size="30px"
+                        />
+                    </button>
+                </section>
                 <CardMain
                     cardTitle = {props.cardTitle}
                     cardText = {props.cardText}
@@ -68,7 +76,7 @@ const Card = (props) => {
                 />
 
                 
-            </div>
+            </section>
         )}
         </>
     );

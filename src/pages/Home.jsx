@@ -1,10 +1,14 @@
 import React, {Fragment, useState} from "react";
 import { useNavigate } from "react-router-dom";
+import { BsBalloonHeartFill } from "react-icons/bs";
 import Card from "../components/Card";
+import InputSearh from "../components/InputSearh";
 
 const Home = (props) => {
   
+  console.log(props.saeAnimals);
   const [count, setCount] = useState(0);
+  const [valueInput, setValueInput] = useState("");
   const navigate = useNavigate();
   
   const clickBtnAllHeart = () => {
@@ -27,17 +31,38 @@ const Home = (props) => {
       setCount(count-1);
   };
   
+  const handleOnChangeInput = (e) => {
+    setValueInput(e.target.value);
+  }
+
   return (
     <>
       <h1 className="title">Marine life</h1>
+      <section>
       <button
         type="button"
         className="btn btnAllHeart"
         onClick={clickBtnAllHeart}
       >
-        <i className="bi bi-balloon-heart-fill pCounter"></i>
-        <p className="pCounter"><span className="btnLikes">All likes:</span> {count}</p>
+        <BsBalloonHeartFill 
+          onMouseOver={({target})=>target.style.color="white"}
+          onMouseOut={({target})=>target.style.color="#c36164"}
+          color="#c36164"
+          size="15px"
+          className="iconHeartFull"
+      
+        />
+        <p className="pCounter"><span className="btnLikes"> All likes:</span> {count}</p>
       </button>
+
+      <InputSearh
+        onChangeInput={handleOnChangeInput}
+        setValueInput={setValueInput}
+        valueInput={valueInput}
+        placeholder="search"
+      />
+
+      </section>
 
       <section className="row cardsBlock">
         {props.saeAnimals.map((saeAnimal) => {

@@ -66,8 +66,6 @@ body {
 
 .btnHeart, .btnDel {
   border: none;
-  height: 55px;
-  width: 10%;
 }
 
 .btnHeart svg {
@@ -75,11 +73,12 @@ body {
 }
 
 
-
-
 .cardsBlock {
   gap: 5%;
-  justify-content: space-between;
+  justify-content: space-around;
+  display: flex;
+    max-width: 1300px;
+    flex-wrap: wrap;
 }
 
 .card {
@@ -87,27 +86,62 @@ body {
   background-image: url("./../public/img/backgroundCard.png");
   background-size: cover;
   background-position: center;
+  border-radius: 8px;
   box-shadow: 2px 2px 15px #005f90;
   padding: 20px 0;
   transition: box-shadow .5s linear;
+  width: 20%;
+  min-width: 270px;
+  margin-bottom: 60px;
+  padding: 3%;
 }
 
 .card:hover {
   box-shadow: 5px 5px 25px #005f90;
 }
 
+.btnBlock {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.cardImg{
+  height: 200px;
+  width: 100%;
+}
 
 
-
-.container .pt-4 {
+.container {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 
 .btnLikes, .btnBack {
-    font-family: 'SevenSeasRegular';
-    font-weight: 700;
-    font-size: 30px;
+  font-family: 'SevenSeasRegular';
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cardTitle {
+  letter-spacing: .5rem;
+  width: 100%;
+  white-space: pre-line;
+}
+
+.cardText {
+  color: white;
+  letter-spacing: .2rem;
+}
+
+.btnAllHeart:hover .iconHeartFull{
+  color: white;
 }
