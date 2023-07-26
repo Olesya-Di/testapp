@@ -29,17 +29,17 @@ const Home = (props) => {
   
   return (
     <>
-      <h1>Home page</h1>
+      <h1 className="title">Marine life</h1>
       <button
         type="button"
-        className="btn btn-outline-danger btnAllHeart"
+        className="btn btnAllHeart"
         onClick={clickBtnAllHeart}
       >
         <i className="bi bi-balloon-heart-fill pCounter"></i>
-        <p className="pCounter"> All likes: {count}</p>
+        <p className="pCounter"><span className="btnLikes">All likes:</span> {count}</p>
       </button>
 
-      <div className="row">
+      <section className="row cardsBlock">
         {props.saeAnimals.map((saeAnimal) => {
           return (
             <Fragment key = {saeAnimal['id']}>
@@ -58,7 +58,7 @@ const Home = (props) => {
             </Fragment>
           );
         })}
-      </div>
+      </section>
     </>
   );
 };

@@ -24,8 +24,8 @@ const App = () => {
   return (
   <>
 
-    <div className='container col-12'>
-      <div className='container pt-4'>
+    <section className='container col-12'>
+      <section className='container pt-4'>
         <Router>
           <Routes>
             <Route path='/' exact element = {<Home
@@ -42,8 +42,8 @@ const App = () => {
             />} />
           </Routes>
         </Router>    
-      </div>
-    </div>
+      </section>
+    </section>
   </>
   )
 }

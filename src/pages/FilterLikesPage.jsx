@@ -13,17 +13,17 @@ const FilterLikesPage = (props) => {
 
   return (
     <>
-      <h1>Your likes</h1>
+      <h1 className="title">Your likes</h1>
       <button 
         className="btn btn-outline-primary btnBack" 
         onClick={clickBtnBack}>
-          Go Back
+          <span className="btnLikes">Go Back</span>
       </button>
 
-      <div className="row">
+      <section className="row cardsBlock">
         {props.likedCardsIds.map((saeAnimal) => {
           return (
-            <div className="col-sm-4 mb-4 card" key = {saeAnimal['id']}>
+            <section className="col-sm-4 mb-4 card" key = {saeAnimal['id']}>
             
               <CardMain 
                 cardTitle = {saeAnimal['file-name']}
@@ -31,10 +31,10 @@ const FilterLikesPage = (props) => {
                 urlCardImg = {saeAnimal['image_uri']}
               />
 
-            </div>
+            </section>
           );
         })}
-      </div>
+      </section>
     </>
   );
 };
