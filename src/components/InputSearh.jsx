@@ -1,10 +1,14 @@
 import React from "react";
-import ButtonCross from "./ButtonCross";
+import { RxCross1 } from "react-icons/rx";
 
-const InputSearh = (props) => {
+const InputSearh = ( {valueInput, setValueInput, onChangeInput, ...props} ) => {
+    
+    // const handleChange = (e) => {
+    //     setValueInput(e.target.value);
+    // }
     
     const handleReset = () => {
-        props.setValueInput("");
+        setValueInput("");
         document.querySelector('.inputBlock__inputSearch').focus();
     };
 
@@ -15,12 +19,15 @@ const InputSearh = (props) => {
                     id="inputSearch"
                     className="inputBlock__inputSearch"
                     placeholder={props.placeholder}
-                    onChange={props.onChangeInput}
-                    value={props.valueInput}
+                    onChange={onChangeInput}
+                    value={valueInput}
                 /> 
 
                 <section className="imgBlock" onClick={handleReset}>
-                    <ButtonCross />
+                    <RxCross1
+                        size="20px"
+                        color="#005f90"
+                    />
                 </section>
             </section>
         </section>

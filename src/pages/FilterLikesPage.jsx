@@ -14,12 +14,14 @@ const FilterLikesPage = (props) => {
   return (
     <>
       <h1 className="title">Your likes</h1>
-      <button 
-        className="btn btn-outline-primary btnBack" 
-        onClick={clickBtnBack}>
-          <span className="btnLikes">Go Back</span>
-      </button>
-
+      <section className="menu">
+        <button 
+          className="btn btnBack" 
+          onClick={clickBtnBack}>
+            <span className="btnLikes">Go Back</span>
+        </button>
+      </section>
+      
       <section className="row cardsBlock">
         {props.likedCardsIds.map((saeAnimal) => {
           return (

@@ -1,14 +1,22 @@
-import React, {Fragment, useState} from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BsBalloonHeartFill } from "react-icons/bs";
 import Card from "../components/Card";
 import InputSearh from "../components/InputSearh";
 
-const Home = (props) => {
+const Home = ({ saeAnimals, setSaeAnimals, ...props }) => {
   
-  console.log(props.saeAnimals);
+  const [isMoreSaeAnimals, setIsMoreSaeAnimals] = useState(false);
   const [count, setCount] = useState(0);
   const [valueInput, setValueInput] = useState("");
+  const [indexSaeAnimals, setIndexSaeAnimals] = useState(12);
+  
+ 
+
+// useEffect(()=> {
+//   setDisplayedSaeAnimals(saeAnimals);
+// }, [saeAnimals])
+
   const navigate = useNavigate();
   
   const clickBtnAllHeart = () => {
@@ -31,14 +39,35 @@ const Home = (props) => {
       setCount(count-1);
   };
   
+  
+  const filteredSaeAnimals = saeAnimals
+    .filter((saeAnimal) => {
+      return (
+        saeAnimal['file-name'].toLowerCase().includes(valueInput.toLowerCase()) ||
+        saeAnimal['catch-phrase'].toLowerCase().includes(valueInput.toLowerCase())
+      );
+  });
+
   const handleOnChangeInput = (e) => {
     setValueInput(e.target.value);
+ 
   }
 
+
+  const handleShowMore = () => {
+    setIndexSaeAnimals(indexSaeAnimals + 12);
+    if(indexSaeAnimals < 12) {
+      setIndexSaeAnimals(indexSaeAnimals);
+      setIsMoreSaeAnimals(true);
+      
+    }
+   
+  };
+  console.log(isMoreSaeAnimals);
   return (
     <>
       <h1 className="title">Marine life</h1>
-      <section>
+      <section className="menu">
       <button
         type="button"
         className="btn btnAllHeart"
@@ -64,12 +93,13 @@ const Home = (props) => {
 
       </section>
 
-      <section className="row cardsBlock">
-        {props.saeAnimals.map((saeAnimal) => {
+      <section className="cardsBlock">
+        {filteredSaeAnimals
+        .slice(0, indexSaeAnimals)
+        .map((saeAnimal) => {
           return (
             <Fragment key = {saeAnimal['id']}>
-              <Card 
-                      
+              <Card   
                 saeAnimals = {props.saeAnimals}
                 likedCardsIds={props.likedCardsIds} 
                 onLike = {handleLike}
@@ -84,6 +114,23 @@ const Home = (props) => {
           );
         })}
       </section>
+
+      <section className="menu">
+        <button 
+          className="btn btnShowMore" 
+          onClick={handleShowMore}>
+            <span className="btnLikes">Show more
+              {
+                isMoreSaeAnimals ? "Not anymore" : "Show more"
+              }
+              
+              
+              
+              
+            </span>
+        </button>
+      </section>
+
     </>
   );
 };

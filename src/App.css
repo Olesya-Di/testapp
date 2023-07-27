@@ -26,6 +26,14 @@ body {
   line-height: 70px;
   margin-top: 100px;
 }
+
+.menu {
+  display: flex;
+  gap: 50px;
+  height: 50px;
+  margin: 5% 0;
+}
+
 .pCounter{
   color: #c36164;;
   display: inline;
@@ -42,10 +50,8 @@ body {
 
 .btnAllHeart,
 .btnBack {
-  
-  margin: 5% 0;
+  letter-spacing: .2rem;   
   width: 300px;
-
 }
 
 .btnAllHeart {
@@ -63,6 +69,16 @@ body {
   color: white;
 }
 
+.btnBack {
+  border: 2px solid #005f90;
+  color: #005f90;
+}
+
+.btnBack:hover {
+  color: white;
+  background-color: #005f90;
+  border: 2px solid #005f90;
+}
 
 .btnHeart, .btnDel {
   border: none;
@@ -144,4 +160,54 @@ body {
 
 .btnAllHeart:hover .iconHeartFull{
   color: white;
+}
+
+.inputBlock {
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+.inputBlock__inputSearch::placeholder {
+  color: #005f90;
+  font-size: 30px;
+}
+.inputBlock__inputSearch {
+  font-family: "SevenSeasRegular"; 
+  font-size: 30px;
+  position: relative;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  border: 2px solid #005f90;
+  border-radius: 8px;
+  background: none;
+  padding: 10px 50px 10px 20px;
+  color: #005f90;
+  resize: none;
+  
+  &:hover {
+    border: 2px solid #c36164;
+    outline-width: 0;
+  }
+  &:active {
+    border: 2px solid #c36164;
+    outline-width: 0;
+  }
+  &:focus {
+    border: 2px solid #c36164;
+    outline-width: 0;
+  }
+}
+.imgBlock {
+  position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    z-index: 50;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 15px 40px 0 0;
 }

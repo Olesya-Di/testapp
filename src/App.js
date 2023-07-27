@@ -25,10 +25,6 @@ const App = () => {
 
   return (
   <>
-  {/* <img src={'./../public/img/cross.svg'}/>
-  <img src={'./img/cross.svg'}/>
-  <img src={'./../public/img/shells.png'}/>
-  {require(`../../assets/pic-${j + 1}.jpg`).default} */}
     <section className='bodyContainer'>
       <section className='container'>
         <Router>
