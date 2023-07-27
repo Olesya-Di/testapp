@@ -44,9 +44,7 @@ const Card = (props) => {
                             <BsBalloonHeartFill
                                 onMouseOver={({target})=>target.style.color="white"}
                                 onMouseOut={({target})=>target.style.color="#c36164"}
-                                color="#c36164"
                                 size="30px"
-                                className="iconHeartFull"
                             />:
                             <BsBalloonHeart 
                                 onMouseOver={({target})=>target.style.color="white"}

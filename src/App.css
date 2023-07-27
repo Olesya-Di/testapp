@@ -40,16 +40,23 @@ body {
   font-size: 25px;
 }
 
-
 .btn {
   cursor: pointer;
   background: none;
-  border-radius: 8px;
+  
 }
 
+.btnLikes, .btnBack {
+  font-family: 'SevenSeasRegular';
+  font-weight: 700;
+  font-size: 30px;
+}
 
 .btnAllHeart,
-.btnBack {
+.btnBack,
+.btnShowMore {
+  border-radius: 8px;
+  height: 100%;
   letter-spacing: .2rem;   
   width: 300px;
 }
@@ -59,7 +66,6 @@ body {
 }
 
 .btnAllHeart:hover {
-  
   color: white;
   background-color: #c36164;
   border: 2px solid #c36164;
@@ -69,25 +75,37 @@ body {
   color: white;
 }
 
-.btnBack {
+.btnAllHeart:disabled,
+.btnUp:disabled {
+  cursor: default;
+  background: none;
+}
+
+
+
+.btnAllHeart:disabled .pCounter {
+  color: #c36164;
+}
+
+.btnBack, .btnShowMore {
   border: 2px solid #005f90;
   color: #005f90;
 }
 
-.btnBack:hover {
+.btnBack:hover,
+.btnShowMore:hover {
   color: white;
   background-color: #005f90;
   border: 2px solid #005f90;
 }
 
-.btnHeart, .btnDel {
+.btnHeart, .btnDel, .btnUp {
   border: none;
 }
 
 .btnHeart svg {
   color: #c36164;
 }
-
 
 .cardsBlock {
   gap: 5%;
@@ -119,7 +137,6 @@ body {
 .btnBlock {
   display: flex;
   justify-content: space-between;
-
 }
 
 .cardImg{
@@ -127,18 +144,10 @@ body {
   width: 100%;
 }
 
-
 .container {
   align-items: center;
   display: flex;
   flex-direction: column;
-}
-
-
-.btnLikes, .btnBack {
-  font-family: 'SevenSeasRegular';
-  font-weight: 700;
-  font-size: 30px;
 }
 
 .cardBody {
@@ -158,10 +167,6 @@ body {
   letter-spacing: .2rem;
 }
 
-.btnAllHeart:hover .iconHeartFull{
-  color: white;
-}
-
 .inputBlock {
   display: flex;
   justify-content: flex-end;
@@ -170,10 +175,12 @@ body {
   position: relative;
   width: 100%;
 }
+
 .inputBlock__inputSearch::placeholder {
   color: #005f90;
   font-size: 30px;
 }
+
 .inputBlock__inputSearch {
   font-family: "SevenSeasRegular"; 
   font-size: 30px;
@@ -192,22 +199,32 @@ body {
     border: 2px solid #c36164;
     outline-width: 0;
   }
+
   &:active {
     border: 2px solid #c36164;
     outline-width: 0;
   }
+
   &:focus {
     border: 2px solid #c36164;
     outline-width: 0;
   }
 }
+
 .imgBlock {
   position: absolute;
-    height: 1.5rem;
-    width: 1.5rem;
-    z-index: 50;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    padding: 15px 40px 0 0;
+  height: 1.5rem;
+  width: 1.5rem;
+  z-index: 50;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 15px 40px 0 0;
+}
+
+.footer {
+  display: flex;
+  gap: 30px;
+  height: 50px;
+  margin: 2% 0 5% 0;
 }
