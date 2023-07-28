@@ -31,7 +31,7 @@ body {
   display: flex;
   gap: 50px;
   height: 50px;
-  margin: 5% 0;
+  /* margin: 5% 0; */
 }
 
 .pCounter{
@@ -75,14 +75,6 @@ body {
   color: white;
 }
 
-.btnAllHeart:disabled,
-.btnUp:disabled {
-  cursor: default;
-  background: none;
-}
-
-
-
 .btnAllHeart:disabled .pCounter {
   color: #c36164;
 }
@@ -97,6 +89,13 @@ body {
   color: white;
   background-color: #005f90;
   border: 2px solid #005f90;
+}
+
+.btnAllHeart:disabled,
+.btnShowMore:disabled {
+  cursor: default;
+  background: none;
+  color: #005f90;
 }
 
 .btnHeart, .btnDel, .btnUp {
@@ -125,6 +124,7 @@ body {
   padding: 20px 0;
   transition: box-shadow .5s linear;
   width: 20%;
+  min-height: 357px;
   min-width: 270px;
   margin-bottom: 60px;
   padding: 3%;
@@ -227,4 +227,25 @@ body {
   gap: 30px;
   height: 50px;
   margin: 2% 0 5% 0;
+}
+
+.notFoundBlock {
+  align-items: center;
+  display:flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+
+.notFoundBlock__text {
+  font-size: 35px;
+  letter-spacing: .2rem;
+}
+
+.notFoundBlock__imgBlock {
+  max-width: 700px;
+}
+
+.notFoundBlock__img {
+  width: 100%;
 }

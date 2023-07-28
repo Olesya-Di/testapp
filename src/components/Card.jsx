@@ -4,18 +4,17 @@ import { BsBalloonHeartFill, BsBalloonHeart } from "react-icons/bs";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 
-const Card = (props) => {
+const Card = ({ setSaeAnimals, filteredSaeAnimals, id, ...props }) => {
     
-    const [showComponent, setShowComponent] = useState(true);
     const [pressed, setPressed] = useState(false);
 
-    const clickBtnDel = () => {
+    const handleDelete = (id) => {
+        setSaeAnimals(filteredSaeAnimals.filter(obj => obj.id !== id));
         if(pressed) {
             props.decreaseItem();
             props.onLike(props.saeAnimal);
         }
-        setShowComponent(false);
-    };
+    }
 
     const clickBtnHeart = () => {
         setPressed(!pressed);
@@ -27,12 +26,9 @@ const Card = (props) => {
             props.decreaseItem();
         };
     };
-    
 
     return (
         <>
-        
-        {showComponent && (
             <section className="card"> 
                 <section className="btnBlock"> 
                     <button 
@@ -57,7 +53,9 @@ const Card = (props) => {
                     <button
                         type="button"
                         className="btn btnDel"
-                        onClick={clickBtnDel}
+                        onClick={ () => { 
+                            handleDelete(id); 
+                        } }
                     >
                         <RiDeleteBin6Line
                             onMouseOver={({target})=>target.style.color="white"}
@@ -71,11 +69,8 @@ const Card = (props) => {
                     cardTitle = {props.cardTitle}
                     cardText = {props.cardText}
                     urlCardImg = {props.urlCardImg}
-                />
-
-                
+                />            
             </section>
-        )}
         </>
     );
 };

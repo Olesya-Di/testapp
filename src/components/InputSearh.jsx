@@ -1,15 +1,12 @@
 import React from "react";
 import { RxCross1 } from "react-icons/rx";
 
-const InputSearh = ( {valueInput, setValueInput, onChangeInput, ...props} ) => {
-    
-    // const handleChange = (e) => {
-    //     setValueInput(e.target.value);
-    // }
+const InputSearh = ( {valueInput, setValueInput, onChangeInput, setIsMoreSaeAnimals, ...props} ) => {
     
     const handleReset = () => {
         setValueInput("");
         document.querySelector('.inputBlock__inputSearch').focus();
+        setIsMoreSaeAnimals(false);
     };
 
     return (

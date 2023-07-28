@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import CardMain from "../components/CardMain";
+import BtnPramiry from "../components/buttons/BtnPramiry";
 
 const FilterLikesPage = (props) => {
   
@@ -14,12 +15,13 @@ const FilterLikesPage = (props) => {
   return (
     <>
       <h1 className="title">Your likes</h1>
-      <section className="menu">
-        <button 
+      <section className="menu"> 
+        <BtnPramiry
           className="btn btnBack" 
-          onClick={clickBtnBack}>
-            <span className="btnLikes">Go Back</span>
-        </button>
+          onClick={clickBtnBack}
+        >
+          <span className="btnLikes">Go Back</span>
+        </BtnPramiry>
       </section>
       
       <section className="row cardsBlock">
