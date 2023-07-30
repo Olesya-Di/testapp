@@ -9,15 +9,15 @@ import FilterLikesPage from './pages/FilterLikesPage';
 
 const App = () => {
   
-  const [saeAnimals, setSaeAnimals] = useState([]);
+  const [seaAnimals, setSeaAnimals] = useState([]);
   const [likedCardsIds, setLikedCardsIds] = useState([]);
       
   useEffect(() => {
     
     fetch("https://acnhapi.com/v1a/sea")
     .then(response => response.json())
-    .then(saeAnimals => {
-      setSaeAnimals(saeAnimals);
+    .then(seaAnimals => {
+      setSeaAnimals(seaAnimals);
     })
     .catch(error => console.log(error))
 
@@ -30,14 +30,14 @@ const App = () => {
         <Router>
           <Routes>
             <Route path='/' exact element = {<Home
-              saeAnimals = {saeAnimals}
-              setSaeAnimals = {setSaeAnimals}
+              seaAnimals = {seaAnimals}
+              setSeaAnimals = {setSeaAnimals}
               likedCardsIds = {likedCardsIds}
               setLikedCardsIds = {setLikedCardsIds}
             />} />
             <Route path='/filter-likes-page' element = {<FilterLikesPage
-              saeAnimals = {saeAnimals}
-              setSaeAnimals = {setSaeAnimals}
+              seaAnimals = {seaAnimals}
+              setSeaAnimals = {setSeaAnimals}
               likedCardsIds = {likedCardsIds}
               setLikedCardsIds = {setLikedCardsIds}
             />} />

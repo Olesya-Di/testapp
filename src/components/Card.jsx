@@ -4,21 +4,21 @@ import { BsBalloonHeartFill, BsBalloonHeart } from "react-icons/bs";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 
-const Card = ({ setSaeAnimals, filteredSaeAnimals, id, ...props }) => {
+const Card = ({ setSeaAnimals, filteredSeaAnimals, id, ...props }) => {
     
     const [pressed, setPressed] = useState(false);
 
     const handleDelete = (id) => {
-        setSaeAnimals(filteredSaeAnimals.filter(obj => obj.id !== id));
+        setSeaAnimals(filteredSeaAnimals.filter(obj => obj.id !== id));
         if(pressed) {
             props.decreaseItem();
-            props.onLike(props.saeAnimal);
+            props.onLike(props.seaAnimal);
         }
     }
 
     const clickBtnHeart = () => {
         setPressed(!pressed);
-        props.onLike(props.saeAnimal);
+        props.onLike(props.seaAnimal);
         
         if(!pressed) {
             props.incrementItem();
