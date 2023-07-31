@@ -89,47 +89,40 @@ const Home = ({ seaAnimals, setSeaAnimals, ...props }) => {
   window.addEventListener("scroll", toggleVisible);
   const isFilteredSeaAnimals = filteredSeaAnimals.length === 0;
   
-console.log(seaAnimals);
+// const buttons = [
+//   { name: "All", value: "All"},
+//   { name: "Slow", value: "Slow"},
+//   { name: "Fast", value: "Fast"},
+//   { name: "Stationary", value: "Stationary"},
+// ]
 
-const buttons = [
-  { name: "All", value: "All"},
-  { name: "Slow", value: "Slow"},
-  { name: "Fast", value: "Fast"},
-  { name: "Stationary", value: "Stationary"},
-]
+// const [filteredSeaAnimalsSpeed, setFilteredSeaAnimalsSpeed] = useState(filteredSeaAnimals);
 
-const [filteredSeaAnimalsSpeed, setFilteredSeaAnimalsSpeed] = useState(filteredSeaAnimals);
-
-const handleClickSpeed = (name) => {
-  console.log("huhuhu")
-  let filteredSeaAnimalsSpeed = []; 
+// const handleClickSpeed = (name) => {
+//   console.log("huhuhu")
+//   let filteredSeaAnimalsSpeed = []; 
   
-  if(name === "All") {
-    filteredSeaAnimalsSpeed = filteredSeaAnimals;
-  } else {
-    filteredSeaAnimalsSpeed = filteredSeaAnimals.filter((seaAnimal) => {
-      return seaAnimal["speed"] === name;
-    });
+//   if(name === "All") {
+//     filteredSeaAnimalsSpeed = filteredSeaAnimals;
+//   } else {
+//     filteredSeaAnimalsSpeed = filteredSeaAnimals.filter((seaAnimal) => {
+//       return seaAnimal["speed"] === name;
+//     });
     
-  }
-  setFilteredSeaAnimalsSpeed(filteredSeaAnimalsSpeed);
-};
+//   }
+//   setFilteredSeaAnimalsSpeed(filteredSeaAnimalsSpeed);
+// };
 
 //console.log(filteredSeaAnimalsSpeed)
 //console.log(filteredSeaAnimals[1][speed])
-console.log(filteredSeaAnimalsSpeed)
+//console.log(filteredSeaAnimalsSpeed)
 //  console.log(seaAnimals[0].id);
 //  console.log(seaAnimals[0].speed);
 // console.log(seaAnimals[0]['file-name']);
 
   return (
     <>
-    {
-      filteredSeaAnimals.map((items)=>{
-        <div>{items['speed']}</div>
-      })
-    }
-{
+    {/* {
       buttons.map(({ name, value }) => {
         return (
           <button
@@ -142,10 +135,7 @@ console.log(filteredSeaAnimalsSpeed)
         </button>
         )
       })
-    }
-      
-
-
+    } */}
       <h1 className="title">Marine life</h1>
       
       <section className="menu">           
@@ -172,38 +162,12 @@ console.log(filteredSeaAnimalsSpeed)
         />
       </section>
       
-      <section className="menu">
-      
-      
-    
-        {/* <BtnPramiry
-          className="btn btnBack" 
-          onClick={HandleClickSpeed}
-        >
-          <span className="btnLikes">Slow</span>
-        </BtnPramiry>
-
-        <BtnPramiry
-          className="btn btnBack" 
-          //onClick={clickBtnBack}
-        >
-          <span className="btnLikes">Fast</span>
-        </BtnPramiry>
-
-        <BtnPramiry
-          className="btn btnBack" 
-          //onClick={clickBtnBack}
-        >
-          <span className="btnLikes">Stationary</span>
-        </BtnPramiry> */}
-        </section>
-
       <section className="cardsBlock">
         { 
         isFilteredSeaAnimals ?
           <NotFound/>
         :
-        filteredSeaAnimalsSpeed.slice(0, indexSeaAnimals).map((seaAnimal) => {
+        filteredSeaAnimals.slice(0, indexSeaAnimals).map((seaAnimal) => {
             return (
                 <Card
                   key={seaAnimal["id"]}
@@ -241,7 +205,7 @@ console.log(filteredSeaAnimalsSpeed)
           {isMoreSeaAnimals && (
             <BtnPramiry
               type="button"
-              className="btn btnUp"
+              className="btnIcon btnUp"
               onClick={scrollToTop}
               style={{ display: visible ? "inline" : "none" }}
             >

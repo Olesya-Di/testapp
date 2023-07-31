@@ -33,7 +33,7 @@ const Card = ({ setSeaAnimals, filteredSeaAnimals, id, ...props }) => {
                 <section className="btnBlock"> 
                     <button 
                         type="button" 
-                        className="btn btnHeart"
+                        className="btnIcon btnHeart"
                         onClick = {clickBtnHeart}
                     >
                         {pressed ?
@@ -52,7 +52,7 @@ const Card = ({ setSeaAnimals, filteredSeaAnimals, id, ...props }) => {
 
                     <button
                         type="button"
-                        className="btn btnDel"
+                        className="btnIcon btnDel"
                         onClick={ () => { 
                             handleDelete(id); 
                         } }
