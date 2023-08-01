@@ -1,17 +1,20 @@
 {
   "files": {
-    "main.css": "/testapp/static/css/main.785ec0e4.css",
-    "main.js": "/testapp/static/js/main.6f312100.js",
+    "main.css": "/testapp/static/css/main.5fbe6a60.css",
+    "main.js": "/testapp/static/js/main.315e8e7b.js",
     "static/js/787.2746eaee.chunk.js": "/testapp/static/js/787.2746eaee.chunk.js",
-    "static/media/bootstrap-icons.woff?": "/testapp/static/media/bootstrap-icons.4753c5ba57962b4d7bf8.woff",
-    "static/media/bootstrap-icons.woff2?": "/testapp/static/media/bootstrap-icons.6d63d0501e5ed7b79dab.woff2",
+    "static/media/backgroundFull.jpg": "/testapp/static/media/backgroundFull.32013f3f462cb22d8611.jpg",
+    "static/media/SevenSeasRegular-lgeYD.ttf": "/testapp/static/media/SevenSeasRegular-lgeYD.4d69962f435192e4a0a1.ttf",
+    "static/media/octopus.png": "/testapp/static/media/octopus.f9a770e95ec6113b2697.png",
+    "static/media/shells.png": "/testapp/static/media/shells.669a3874551ccd8ce452.png",
+    "static/media/backgroundCard.png": "/testapp/static/media/backgroundCard.d42b3f314fc4c904651c.png",
     "index.html": "/testapp/index.html",
-    "main.785ec0e4.css.map": "/testapp/static/css/main.785ec0e4.css.map",
-    "main.6f312100.js.map": "/testapp/static/js/main.6f312100.js.map",
+    "main.5fbe6a60.css.map": "/testapp/static/css/main.5fbe6a60.css.map",
+    "main.315e8e7b.js.map": "/testapp/static/js/main.315e8e7b.js.map",
     "787.2746eaee.chunk.js.map": "/testapp/static/js/787.2746eaee.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.785ec0e4.css",
-    "static/js/main.6f312100.js"
+    "static/css/main.5fbe6a60.css",
+    "static/js/main.315e8e7b.js"
   ]
 }
