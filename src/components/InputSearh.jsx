@@ -1,7 +1,9 @@
 import React from "react";
 import { RxCross1 } from "react-icons/rx";
 
-const InputSearh = ( {valueInput, setValueInput, onChangeInput, setIsMorePeople, ...props} ) => {
+const InputSearh = (props) => {
+    
+    const { styleTeam, valueInput, placeholder, setValueInput, onChangeInput, setIsMorePeople } = props;
     
     const handleReset = () => {
         setValueInput("");
@@ -14,8 +16,8 @@ const InputSearh = ( {valueInput, setValueInput, onChangeInput, setIsMorePeople,
             <section className="inputBlock">
                 <input
                     id="inputSearch"
-                    className="inputBlock__inputSearch"
-                    placeholder={props.placeholder}
+                    className={`inputBlock__inputSearch ${styleTeam}`}
+                    placeholder={placeholder}
                     onChange={onChangeInput}
                     value={valueInput}
                 /> 

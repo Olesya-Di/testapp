@@ -1,6 +1,9 @@
 import React from "react";
 
-const BtnPramiry = ({ disabled, children, onClick, className, style, value }) => {
+const BtnPramiry = (props) => {
+    
+    const { disabled, children, onClick, className, style, value } = props;
+    
     return (
         <button
             type="button"
@@ -8,11 +11,10 @@ const BtnPramiry = ({ disabled, children, onClick, className, style, value }) =>
             disabled={disabled}
             onClick={onClick}
             style={style}
-            
             value={value}
         >
-           { children }
-      </button>
+            { children }
+        </button>
     );
 };
 

@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import CardMain from "./CardMain";
 import { BsBalloonHeartFill, BsBalloonHeart } from "react-icons/bs";
 import { RiDeleteBin6Line } from "react-icons/ri";
-
+import BtnPramiry from "./buttons/BtnPramiry";
 
 const Card = (props) => {
 
-    const { human, setPeople, filteredPeople, onLike, id, name, age, phone, email, urlCardImg, incrementItem, decreaseItem } = props;
+    const { styleTeam, human, setPeople, filteredPeople, onLike, id, name, age, phone, email, urlCardImg, incrementItem, decreaseItem } = props;
 
     const [pressed, setPressed] = useState(false);
 
@@ -31,10 +31,9 @@ const Card = (props) => {
 
     return (
         <>
-            <section className="card"> 
+            <section className={`card ${styleTeam}`}> 
                 <section className="btnBlock"> 
-                    <button 
-                        type="button" 
+                    <BtnPramiry 
                         className="btnIcon btnHeart"
                         onClick = {clickBtnHeart}
                     >
@@ -50,10 +49,9 @@ const Card = (props) => {
                                 size="30px"
                             />
                         }
-                    </button>
+                    </BtnPramiry>
 
-                    <button
-                        type="button"
+                    <BtnPramiry
                         className="btnIcon btnDel"
                         onClick={ () => { 
                             handleDelete(id); 
@@ -65,7 +63,7 @@ const Card = (props) => {
                             color="#ffb2b9"
                             size="30px"
                         />
-                    </button>
+                    </BtnPramiry>
                 </section>
                 <CardMain
                     name={name}

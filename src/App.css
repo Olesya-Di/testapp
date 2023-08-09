@@ -8,11 +8,36 @@
 
 body {
   color: #df1f50;
+  font-family: "SevenSeasRegular"; 
+  text-shadow: 1px 1px 1px #fd8eb3;
+}
+
+.body__dark {
   background-image: url("./../public/img/backgroundFull.png");
   background-size: cover;
   background-repeat: repeat;
-  font-family: "SevenSeasRegular"; 
-  text-shadow: 1px 1px 1px #fd8eb3;
+  background-position: left top;
+}
+
+.body__light {
+  background-color: #FFE2E2;
+}
+
+.team__light {
+  background-color: #293133;
+}
+
+.team__dark {
+  background-color: black;
+}
+
+.bodyContainer {
+  position: relative;
+}
+
+.bodyContainer__logo {
+  position: absolute;
+  width: 20%;
 }
 
 .container {
@@ -43,7 +68,6 @@ body {
 }
 
 .btn {
-  background-color: black;
   cursor: pointer;
   font-size: 30px;
   width: 300px;
@@ -81,13 +105,12 @@ body {
   color: #df1f50;
 }
 
-.btnBack, .btnShowMore {
+.btnOrdinary {
   border: 2px solid #ffb2b9;
   color: #ffb2b9;
 }
 
-.btnBack:hover,
-.btnShowMore:hover {
+.btnOrdinary:hover {
   background-color: #ffb2b9;
   border: 2px solid #ffb2b9;
   color: #df1f50;
@@ -95,9 +118,18 @@ body {
 
 .btnAllHeart:disabled,
 .btnShowMore:disabled {
-  background-color: black;
   color: #ffb2b9;
   cursor: default;
+}
+
+.btnAllHeart__light:disabled,
+.btnShowMore__light:disabled {
+  background-color: #293133;
+}
+
+.btnAllHeart__dark:disabled,
+.btnShowMore__dark:disabled {
+  background-color: black;
 }
 
 .btnHeart, .btnDel, .btnUp {
@@ -117,9 +149,8 @@ body {
 }
 
 .card {
-  background-color: black;
+  border: 2px solid #df1f50;
   border-radius: 8px;
-  box-shadow: 3px 3px 15px #df1f50;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -132,7 +163,7 @@ body {
 }
 
 .card:hover {
-  box-shadow: 5px 5px 25px #ffb2b9;
+  box-shadow: 1px 1px 1px 5px #df1f50;
 }
 
 .btnBlock {
@@ -140,7 +171,8 @@ body {
   justify-content: space-between;
 }
 
-.cardImg{
+.cardImg {
+  padding: 0 15px;
   width: 100%;
 }
 
@@ -186,7 +218,6 @@ body {
 .inputBlock__inputSearch {
   border: 2px solid #ffb2b9;
   border-radius: 8px;
-  background-color: black;
   color: #ffb2b9;
   font-family: "SevenSeasRegular"; 
   font-size: 30px;
@@ -323,3 +354,12 @@ body {
     text-align: center;
   }
 }
+
+input::-webkit-input-placeholder       {opacity: 1; transition: opacity 0.3s ease;}
+input::-moz-placeholder                {opacity: 1; transition: opacity 0.3s ease;}
+input:-moz-placeholder                 {opacity: 1; transition: opacity 0.3s ease;}
+input:-ms-input-placeholder            {opacity: 1; transition: opacity 0.3s ease;}
+input:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+input:focus::-moz-placeholder          {opacity: 0; transition: opacity 0.3s ease;}
+input:focus:-moz-placeholder           {opacity: 0; transition: opacity 0.3s ease;}
+input:focus:-ms-input-placeholder      {opacity: 0; transition: opacity 0.3s ease;}

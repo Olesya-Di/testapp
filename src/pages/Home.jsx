@@ -9,15 +9,14 @@ import NotFound from "../components/NotFound";
 import BtnPramiry from "../components/buttons/BtnPramiry";
 
 const Home = (props) => {
-  
-  const { people, setPeople, likedCardsIds, setLikedCardsIds } = props;
+  const { team, setTeam, styleTeam, people, setPeople, likedCardsIds, setLikedCardsIds } = props;
 
   const [visible, setVisible] = useState(false);
   const [isMorePeople, setIsMorePeople] = useState(false);
   const [count, setCount] = useState(0);
   const [valueInput, setValueInput] = useState("");
   const [indexPeople, setIndexPeople] = useState(8);
-  const [visibleItems, setVisibleItems] = useState(people.slice(0, 8)); 
+  const [visibleItems, setVisibleItems] = useState(people.slice(0, 8));
 
   const navigate = useNavigate();
 
@@ -25,11 +24,13 @@ const Home = (props) => {
     navigate("/filter-likes-page");
   };
 
+  const handleChangeTeam = () => {
+    setTeam(!team);
+  }
+
   const handleLike = (cardId) => {
     if (likedCardsIds.includes(cardId)) {
-      setLikedCardsIds(
-        likedCardsIds.filter((card) => card !== cardId)
-      );
+      setLikedCardsIds(likedCardsIds.filter((card) => card !== cardId));
     } else {
       setLikedCardsIds([...likedCardsIds, cardId]);
     }
@@ -49,28 +50,31 @@ const Home = (props) => {
       human.name["last"].toLowerCase().includes(valueInput.toLowerCase())
     );
   });
-    
+
   useEffect(() => {
     indexPeople > Object.keys(filteredPeople).length
       ? setIsMorePeople(true)
       : setIsMorePeople(false);
   }, [indexPeople, filteredPeople]);
-  
+
   const handleOnChangeInput = (e) => {
     setValueInput(e.target.value);
     if (filteredPeople.length <= 8) {
       setIsMorePeople(true);
-    };
+    }
   };
 
   const handleShowMore = () => {
     setIndexPeople(indexPeople + 8);
-    const nextVisibleItems = people.slice(visibleItems.length, visibleItems.length + 8); 
-    setVisibleItems([...visibleItems, ...nextVisibleItems]);  
+    const nextVisibleItems = people.slice(
+      visibleItems.length,
+      visibleItems.length + 8
+    );
+    setVisibleItems([...visibleItems, ...nextVisibleItems]);
     if (people.length <= visibleItems.length + nextVisibleItems.length) {
-      setIsMorePeople(true); 
+      setIsMorePeople(true);
     }
-  };  
+  };
 
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
@@ -90,40 +94,43 @@ const Home = (props) => {
 
   window.addEventListener("scroll", toggleVisible);
   const isFilteredPeople = filteredPeople.length === 0;
-  
-// const buttons = [
-//   { name: "All", value: "All"},
-//   { name: "Women", value: "Slow"},
-//   { name: "Men", value: "Fast"},
-// ]
 
-// const [filteredPeopleSpeed, setFilteredPeopleSpeed] = useState(filteredPeople);
+  // const buttons = [
+  //   { name: "All", value: "All"},
+  //   { name: "Women", value: "Slow"},
+  //   { name: "Men", value: "Fast"},
+  // ]
 
-// const handleClickSpeed = (name) => {
-//   console.log("huhuhu")
-//   let filteredPeopleSpeed = []; 
-  
-//   if(name === "All") {
-//     filteredPeopleSpeed = filteredPeople;
-//   } else {
-//     filteredPeopleSpeed = filteredPeople.filter((human) => {
-//       return human["speed"] === name;
-//     });
-    
-//   }
-//   setFilteredPeopleSpeed(filteredPeopleSpeed);
-// };
+  // const [filteredPeopleSpeed, setFilteredPeopleSpeed] = useState(filteredPeople);
 
-//console.log(filteredPeopleSpeed)
-//console.log(filteredPeople[1][speed])
-//console.log(filteredPeopleSpeed)
-//  console.log(People[0].id);
-//  console.log(People[0].speed);
-// console.log(People[0]['file-name']);
+  // const handleClickSpeed = (name) => {
+  //   console.log("huhuhu")
+  //   let filteredPeopleSpeed = [];
+
+  //   if(name === "All") {
+  //     filteredPeopleSpeed = filteredPeople;
+  //   } else {
+  //     filteredPeopleSpeed = filteredPeople.filter((human) => {
+  //       return human["speed"] === name;
+  //     });
+
+  //   }
+  //   setFilteredPeopleSpeed(filteredPeopleSpeed);
+  // };
+
+  //console.log(filteredPeopleSpeed)
+  //console.log(filteredPeople[1][speed])
+  //console.log(filteredPeopleSpeed)
+  //  console.log(People[0].id);
+  //  console.log(People[0].speed);
+  // console.log(People[0]['file-name']);
+
+const styleBtnAllHeartDisabled = team ? "btnAllHeart__light" : "btnAllHeart__dark";
+const styleBtnShowMore = team ? "btnShowMore__light" : "btnShowMore__dark";
 
   return (
     <>
-    {/* {
+      {/* {
       buttons.map(({ name, value }) => {
         return (
           <button
@@ -138,63 +145,69 @@ const Home = (props) => {
       })
     } */}
       <h1 className="title">Nice to meet you</h1>
-      
-      <section className="menu">           
+
+      <section className="menu">
         <BtnPramiry
-          className="btn btnAllHeart"
+          className={`btn btnAllHeart ${styleTeam} ${styleBtnAllHeartDisabled}`}
           disabled={count === 0}
           onClick={clickBtnAllHeart}
         >
-          <BsBalloonHeartFill
-            color="#df1f50"
-            size="20px"
-          />
+          <BsBalloonHeartFill color="#df1f50" size="20px" />
           <p className="pCounter">
             <span className="btnLikes"> All likes:</span> {count}
           </p>
         </BtnPramiry>
 
         <InputSearh
+          styleTeam={styleTeam}
           onChangeInput={handleOnChangeInput}
           setValueInput={setValueInput}
           valueInput={valueInput}
           setIsMorePeople={setIsMorePeople}
           placeholder="search"
         />
-      </section>
-      
-      <section className="cardsBlock">
-        { 
-        isFilteredPeople ?
-          <NotFound text="Nothing found, please, change your query"/>
-        :
-        filteredPeople.slice(0, indexPeople).map((human) => {
-            return (
-                <Card
-                  key={human.cell}
-                  id={human["id"]}
-                  setPeople={setPeople}
-                  filteredPeople={filteredPeople}
-                  likedCardsIds={likedCardsIds}
-                  onLike={handleLike}
-                  human={human}
-                  name={human.name["first"]}
-                  age={human.dob["age"]}
-                  phone={human.cell}
-                  email={human.email}
-                  urlCardImg={human.picture["large"]}
-                  incrementItem={incrementItem}
-                  decreaseItem={decreaseItem}
-                />
-            );
-          })}
+
+        <BtnPramiry
+          className={`btn btnOrdinary ${styleTeam}`}
+          onClick={handleChangeTeam}
+        >
+          <span className="btnLikes">{ team ? "Dark" : "Light"}</span>
+        </BtnPramiry>
+
       </section>
 
-      { !isFilteredPeople &&
+      <section className="cardsBlock">
+        {isFilteredPeople ? (
+          <NotFound text="Nothing found, please, change your query" />
+        ) : (
+          filteredPeople.slice(0, indexPeople).map((human) => {
+            return (
+              <Card
+                key={human.cell}
+                id={human["id"]}
+                styleTeam={styleTeam}
+                setPeople={setPeople}
+                filteredPeople={filteredPeople}
+                likedCardsIds={likedCardsIds}
+                onLike={handleLike}
+                human={human}
+                name={human.name["first"]}
+                age={human.dob["age"]}
+                phone={human.cell}
+                email={human.email}
+                urlCardImg={human.picture["large"]}
+                incrementItem={incrementItem}
+                decreaseItem={decreaseItem}
+              />
+            );
+          })
+        )}
+      </section>
+
+      {!isFilteredPeople && (
         <footer className="footer">
-          
           <BtnPramiry
-            className="btn btnShowMore" 
+            className={`btn btnOrdinary btnShowMore ${styleTeam} ${styleBtnShowMore}`}
             onClick={handleShowMore}
             disabled={isMorePeople === true}
           >
@@ -202,10 +215,9 @@ const Home = (props) => {
               {isMorePeople ? "Not anymore" : "Show more"}
             </span>
           </BtnPramiry>
-          
+
           {isMorePeople && (
             <BtnPramiry
-              type="button"
               className="btnIcon btnUp"
               onClick={scrollToTop}
               style={{ display: visible ? "inline" : "none" }}
@@ -219,7 +231,7 @@ const Home = (props) => {
             </BtnPramiry>
           )}
         </footer>
-      }
+      )}
     </>
   );
 };
