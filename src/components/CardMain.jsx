@@ -1,14 +1,16 @@
 import React from "react";
 
 const CardMain = (props) => {
+    
+    const { name, phone, urlCardImg } = props;
 
     return (
         <>
-            <img src={props.urlCardImg} className="cardImg" alt={"#"}></img>
+            <img src={urlCardImg} className="cardImg" alt="#"></img>
 
             <section className="cardBody">
-                <h4 className="cardTitle">{props.cardTitle.replace(/_/g, " ")}</h4>
-                <p className="cardText">{props.cardText}</p>
+                <h4 className="cardTitle">{name}</h4>
+                <p className="cardText">{phone}</p>
             </section>
         </>
     );

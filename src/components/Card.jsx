@@ -4,26 +4,28 @@ import { BsBalloonHeartFill, BsBalloonHeart } from "react-icons/bs";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 
-const Card = ({ setSeaAnimals, filteredSeaAnimals, id, ...props }) => {
-    
+const Card = (props) => {
+
+    const { human, setPeople, filteredPeople, onLike, id, name, age, phone, email, urlCardImg, incrementItem, decreaseItem } = props;
+
     const [pressed, setPressed] = useState(false);
 
     const handleDelete = (id) => {
-        setSeaAnimals(filteredSeaAnimals.filter(obj => obj.id !== id));
+        setPeople(filteredPeople.filter(obj => obj.id !== id));
         if(pressed) {
-            props.decreaseItem();
-            props.onLike(props.seaAnimal);
+            decreaseItem();
+            onLike(human);
         }
     }
 
     const clickBtnHeart = () => {
         setPressed(!pressed);
-        props.onLike(props.seaAnimal);
+        onLike(human);
         
         if(!pressed) {
-            props.incrementItem();
+            incrementItem();
         } else {
-            props.decreaseItem();
+            decreaseItem();
         };
     };
 
@@ -38,13 +40,13 @@ const Card = ({ setSeaAnimals, filteredSeaAnimals, id, ...props }) => {
                     >
                         {pressed ?
                             <BsBalloonHeartFill
-                                onMouseOver={({target})=>target.style.color="white"}
-                                onMouseOut={({target})=>target.style.color="#c36164"}
+                                onMouseOver={({target})=>target.style.color="#ffb2b9"}
+                                onMouseOut={({target})=>target.style.color="#df1f50"}
                                 size="30px"
                             />:
                             <BsBalloonHeart 
-                                onMouseOver={({target})=>target.style.color="white"}
-                                onMouseOut={({target})=>target.style.color="#c36164"}
+                                onMouseOver={({target})=>target.style.color="#ffb2b9"}
+                                onMouseOut={({target})=>target.style.color="#df1f50"}
                                 size="30px"
                             />
                         }
@@ -58,17 +60,17 @@ const Card = ({ setSeaAnimals, filteredSeaAnimals, id, ...props }) => {
                         } }
                     >
                         <RiDeleteBin6Line
-                            onMouseOver={({target})=>target.style.color="white"}
-                            onMouseOut={({target})=>target.style.color="#005f90"}
-                            color="#005f90"
+                            onMouseOver={({target})=>target.style.color="#df1f50"}
+                            onMouseOut={({target})=>target.style.color="#ffb2b9"}
+                            color="#ffb2b9"
                             size="30px"
                         />
                     </button>
                 </section>
                 <CardMain
-                    cardTitle = {props.cardTitle}
-                    cardText = {props.cardText}
-                    urlCardImg = {props.urlCardImg}
+                    name={name}
+                    phone={phone}
+                    urlCardImg={urlCardImg}
                 />            
             </section>
         </>

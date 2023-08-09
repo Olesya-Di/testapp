@@ -1,12 +1,12 @@
 import React from "react";
 import { RxCross1 } from "react-icons/rx";
 
-const InputSearh = ( {valueInput, setValueInput, onChangeInput, setIsMoreSeaAnimals, ...props} ) => {
+const InputSearh = ( {valueInput, setValueInput, onChangeInput, setIsMorePeople, ...props} ) => {
     
     const handleReset = () => {
         setValueInput("");
         document.querySelector('.inputBlock__inputSearch').focus();
-        setIsMoreSeaAnimals(false);
+        setIsMorePeople(false);
     };
 
     return (
@@ -23,7 +23,7 @@ const InputSearh = ( {valueInput, setValueInput, onChangeInput, setIsMoreSeaAnim
                 <section className="imgBlock" onClick={handleReset}>
                     <RxCross1
                         size="20px"
-                        color="#005f90"
+                        color="#ffb2b9"
                     />
                 </section>
             </section>

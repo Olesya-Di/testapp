@@ -1,12 +1,12 @@
 import React from "react";
-import octopus from './../img/octopus.png'
+import heart from './../img/heart.png'
 
-const NotFound = () => {
+const NotFound = ({text}) => {
     return (
         <section className="notFoundBlock">
-            <p className="notFoundBlock__text">Nothing found, please, change your query</p>
+            <p className="notFoundBlock__text">{text}</p>
             <section className="notFoundBlock__imgBlock">
-            <img className="notFoundBlock__img" src={octopus} alt="octopus"/>
+            <img className="notFoundBlock__img" src={heart} alt="heart"/>
             </section>
         </section>
     );

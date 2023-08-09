@@ -4,20 +4,17 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import FilterLikesPage from './pages/FilterLikesPage';
 
-
-
-
 const App = () => {
   
-  const [seaAnimals, setSeaAnimals] = useState([]);
+  const [people, setPeople] = useState([]);
   const [likedCardsIds, setLikedCardsIds] = useState([]);
       
   useEffect(() => {
     
-    fetch("https://acnhapi.com/v1a/sea")
+    fetch("https://randomuser.me/api?results=24")
     .then(response => response.json())
-    .then(seaAnimals => {
-      setSeaAnimals(seaAnimals);
+    .then(data => {
+      setPeople(data.results);
     })
     .catch(error => console.log(error))
 
@@ -30,14 +27,14 @@ const App = () => {
         <Router>
           <Routes>
             <Route path='/' exact element = {<Home
-              seaAnimals = {seaAnimals}
-              setSeaAnimals = {setSeaAnimals}
+              people = {people}
+              setPeople = {setPeople}
               likedCardsIds = {likedCardsIds}
               setLikedCardsIds = {setLikedCardsIds}
             />} />
             <Route path='/filter-likes-page' element = {<FilterLikesPage
-              seaAnimals = {seaAnimals}
-              setSeaAnimals = {setSeaAnimals}
+              people = {people}
+              setPeople = {setPeople}
               likedCardsIds = {likedCardsIds}
               setLikedCardsIds = {setLikedCardsIds}
             />} />

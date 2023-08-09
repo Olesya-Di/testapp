@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BsBalloonHeartFill } from "react-icons/bs";
 import { PiArrowFatLinesUpBold } from "react-icons/pi";
@@ -8,14 +8,16 @@ import InputSearh from "../components/InputSearh";
 import NotFound from "../components/NotFound";
 import BtnPramiry from "../components/buttons/BtnPramiry";
 
-const Home = ({ seaAnimals, setSeaAnimals, ...props }) => {
+const Home = (props) => {
   
+  const { people, setPeople, likedCardsIds, setLikedCardsIds } = props;
+
   const [visible, setVisible] = useState(false);
-  const [isMoreSeaAnimals, setIsMoreSeaAnimals] = useState(false);
+  const [isMorePeople, setIsMorePeople] = useState(false);
   const [count, setCount] = useState(0);
   const [valueInput, setValueInput] = useState("");
-  const [indexSeaAnimals, setIndexSeaAnimals] = useState(12);
-  const [visibleItems, setVisibleItems] = useState(seaAnimals.slice(0, 12)); 
+  const [indexPeople, setIndexPeople] = useState(8);
+  const [visibleItems, setVisibleItems] = useState(people.slice(0, 8)); 
 
   const navigate = useNavigate();
 
@@ -24,12 +26,12 @@ const Home = ({ seaAnimals, setSeaAnimals, ...props }) => {
   };
 
   const handleLike = (cardId) => {
-    if (props.likedCardsIds.includes(cardId)) {
-      props.setLikedCardsIds(
-        props.likedCardsIds.filter((card) => card !== cardId)
+    if (likedCardsIds.includes(cardId)) {
+      setLikedCardsIds(
+        likedCardsIds.filter((card) => card !== cardId)
       );
     } else {
-      props.setLikedCardsIds([...props.likedCardsIds, cardId]);
+      setLikedCardsIds([...likedCardsIds, cardId]);
     }
   };
 
@@ -41,32 +43,32 @@ const Home = ({ seaAnimals, setSeaAnimals, ...props }) => {
     setCount(count - 1);
   };
 
-  const filteredSeaAnimals = seaAnimals.filter((seaAnimal) => {
+  const filteredPeople = people.filter((human) => {
     return (
-      seaAnimal["file-name"].toLowerCase().includes(valueInput.toLowerCase()) ||
-      seaAnimal["catch-phrase"].toLowerCase().includes(valueInput.toLowerCase())
+      human.name["first"].toLowerCase().includes(valueInput.toLowerCase()) ||
+      human.name["last"].toLowerCase().includes(valueInput.toLowerCase())
     );
   });
     
   useEffect(() => {
-    indexSeaAnimals > Object.keys(filteredSeaAnimals).length
-      ? setIsMoreSeaAnimals(true)
-      : setIsMoreSeaAnimals(false);
-  }, [indexSeaAnimals, filteredSeaAnimals]);
+    indexPeople > Object.keys(filteredPeople).length
+      ? setIsMorePeople(true)
+      : setIsMorePeople(false);
+  }, [indexPeople, filteredPeople]);
   
   const handleOnChangeInput = (e) => {
     setValueInput(e.target.value);
-    if (filteredSeaAnimals.length <= 12) {
-      setIsMoreSeaAnimals(true);
+    if (filteredPeople.length <= 8) {
+      setIsMorePeople(true);
     };
   };
 
   const handleShowMore = () => {
-    setIndexSeaAnimals(indexSeaAnimals + 12);
-    const nextVisibleItems = seaAnimals.slice(visibleItems.length, visibleItems.length + 12); 
+    setIndexPeople(indexPeople + 8);
+    const nextVisibleItems = people.slice(visibleItems.length, visibleItems.length + 8); 
     setVisibleItems([...visibleItems, ...nextVisibleItems]);  
-    if (seaAnimals.length <= visibleItems.length + nextVisibleItems.length) {
-      setIsMoreSeaAnimals(true); 
+    if (people.length <= visibleItems.length + nextVisibleItems.length) {
+      setIsMorePeople(true); 
     }
   };  
 
@@ -87,38 +89,37 @@ const Home = ({ seaAnimals, setSeaAnimals, ...props }) => {
   };
 
   window.addEventListener("scroll", toggleVisible);
-  const isFilteredSeaAnimals = filteredSeaAnimals.length === 0;
+  const isFilteredPeople = filteredPeople.length === 0;
   
 // const buttons = [
 //   { name: "All", value: "All"},
-//   { name: "Slow", value: "Slow"},
-//   { name: "Fast", value: "Fast"},
-//   { name: "Stationary", value: "Stationary"},
+//   { name: "Women", value: "Slow"},
+//   { name: "Men", value: "Fast"},
 // ]
 
-// const [filteredSeaAnimalsSpeed, setFilteredSeaAnimalsSpeed] = useState(filteredSeaAnimals);
+// const [filteredPeopleSpeed, setFilteredPeopleSpeed] = useState(filteredPeople);
 
 // const handleClickSpeed = (name) => {
 //   console.log("huhuhu")
-//   let filteredSeaAnimalsSpeed = []; 
+//   let filteredPeopleSpeed = []; 
   
 //   if(name === "All") {
-//     filteredSeaAnimalsSpeed = filteredSeaAnimals;
+//     filteredPeopleSpeed = filteredPeople;
 //   } else {
-//     filteredSeaAnimalsSpeed = filteredSeaAnimals.filter((seaAnimal) => {
-//       return seaAnimal["speed"] === name;
+//     filteredPeopleSpeed = filteredPeople.filter((human) => {
+//       return human["speed"] === name;
 //     });
     
 //   }
-//   setFilteredSeaAnimalsSpeed(filteredSeaAnimalsSpeed);
+//   setFilteredPeopleSpeed(filteredPeopleSpeed);
 // };
 
-//console.log(filteredSeaAnimalsSpeed)
-//console.log(filteredSeaAnimals[1][speed])
-//console.log(filteredSeaAnimalsSpeed)
-//  console.log(seaAnimals[0].id);
-//  console.log(seaAnimals[0].speed);
-// console.log(seaAnimals[0]['file-name']);
+//console.log(filteredPeopleSpeed)
+//console.log(filteredPeople[1][speed])
+//console.log(filteredPeopleSpeed)
+//  console.log(People[0].id);
+//  console.log(People[0].speed);
+// console.log(People[0]['file-name']);
 
   return (
     <>
@@ -136,7 +137,7 @@ const Home = ({ seaAnimals, setSeaAnimals, ...props }) => {
         )
       })
     } */}
-      <h1 className="title">Marine life</h1>
+      <h1 className="title">Nice to meet you</h1>
       
       <section className="menu">           
         <BtnPramiry
@@ -145,7 +146,7 @@ const Home = ({ seaAnimals, setSeaAnimals, ...props }) => {
           onClick={clickBtnAllHeart}
         >
           <BsBalloonHeartFill
-            color="#c36164"
+            color="#df1f50"
             size="20px"
           />
           <p className="pCounter">
@@ -157,31 +158,31 @@ const Home = ({ seaAnimals, setSeaAnimals, ...props }) => {
           onChangeInput={handleOnChangeInput}
           setValueInput={setValueInput}
           valueInput={valueInput}
-          setIsMoreSeaAnimals={setIsMoreSeaAnimals}
+          setIsMorePeople={setIsMorePeople}
           placeholder="search"
         />
       </section>
       
       <section className="cardsBlock">
         { 
-        isFilteredSeaAnimals ?
-          <NotFound/>
+        isFilteredPeople ?
+          <NotFound text="Nothing found, please, change your query"/>
         :
-        filteredSeaAnimals.slice(0, indexSeaAnimals).map((seaAnimal) => {
+        filteredPeople.slice(0, indexPeople).map((human) => {
             return (
                 <Card
-                  key={seaAnimal["id"]}
-                  id={seaAnimal["id"]}
-                  seaAnimals={props.seaAnimals}
-                  setSeaAnimals={setSeaAnimals}
-                  filteredSeaAnimals={filteredSeaAnimals}
-                  likedCardsIds={props.likedCardsIds}
+                  key={human.cell}
+                  id={human["id"]}
+                  setPeople={setPeople}
+                  filteredPeople={filteredPeople}
+                  likedCardsIds={likedCardsIds}
                   onLike={handleLike}
-                  seaAnimal={seaAnimal}
-                  cardTitle={seaAnimal["file-name"]}
-                  cardText={seaAnimal["catch-phrase"]}
-                  urlCardImg={seaAnimal["image_uri"]}
-                  speed={seaAnimal["speed"]}
+                  human={human}
+                  name={human.name["first"]}
+                  age={human.dob["age"]}
+                  phone={human.cell}
+                  email={human.email}
+                  urlCardImg={human.picture["large"]}
                   incrementItem={incrementItem}
                   decreaseItem={decreaseItem}
                 />
@@ -189,20 +190,20 @@ const Home = ({ seaAnimals, setSeaAnimals, ...props }) => {
           })}
       </section>
 
-      { !isFilteredSeaAnimals &&
+      { !isFilteredPeople &&
         <footer className="footer">
           
           <BtnPramiry
             className="btn btnShowMore" 
             onClick={handleShowMore}
-            disabled={isMoreSeaAnimals === true}
+            disabled={isMorePeople === true}
           >
             <span className="btnLikes">
-              {isMoreSeaAnimals ? "Not anymore" : "Show more"}
+              {isMorePeople ? "Not anymore" : "Show more"}
             </span>
           </BtnPramiry>
           
-          {isMoreSeaAnimals && (
+          {isMorePeople && (
             <BtnPramiry
               type="button"
               className="btnIcon btnUp"
@@ -210,9 +211,9 @@ const Home = ({ seaAnimals, setSeaAnimals, ...props }) => {
               style={{ display: visible ? "inline" : "none" }}
             >
               <PiArrowFatLinesUpBold
-                onMouseOver={({ target }) => (target.style.color = "white")}
-                onMouseOut={({ target }) => (target.style.color = "#005f90")}
-                color="#005f90"
+                onMouseOver={({ target }) => (target.style.color = "#df1f50")}
+                onMouseOut={({ target }) => (target.style.color = "#ffb2b9")}
+                color="#ffb2b9"
                 size="25px"
               />
             </BtnPramiry>
