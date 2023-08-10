@@ -21,12 +21,11 @@ const App = ({ team, setTeam }) => {
 
   }, []);
 
-  const styleBodyContainer = team ? "body__light" : "body__dark"
   const styleTeam = team ? "team__light" : "team__dark";
 
   return (
   <>
-    <section className={`bodyContainer ${styleBodyContainer}`}>
+    <section className="bodyContainer">
       { team && <img className="bodyContainer__logo" src={hearts} alt='hearts'/> }
       <section className='container'>
         <Router>

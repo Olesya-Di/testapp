@@ -14,6 +14,7 @@ body {
 
 .body__dark {
   background-image: url("./../public/img/backgroundFull.png");
+  background-size: cover;
   background-repeat: repeat;
 }
 
