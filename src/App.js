@@ -5,11 +5,10 @@ import Home from './pages/Home';
 import FilterLikesPage from './pages/FilterLikesPage';
 import hearts from './img/hearts.png'
 
-const App = () => {
+const App = ({ team, setTeam }) => {
   
   const [people, setPeople] = useState([]);
   const [likedCardsIds, setLikedCardsIds] = useState([]);
-  const [team, setTeam] = useState(true);
       
   useEffect(() => {
     

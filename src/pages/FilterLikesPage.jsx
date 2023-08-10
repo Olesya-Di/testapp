@@ -36,7 +36,7 @@ const FilterLikesPage = (props) => {
             return (
               <section 
                 className={`card ${styleTeam}`} 
-                key={human["id"]}
+                key={human.cell}
               >
                 <CardMain
                   name={human.name["first"]}
