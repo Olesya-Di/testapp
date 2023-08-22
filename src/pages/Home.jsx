@@ -7,9 +7,22 @@ import Card from "../components/Card";
 import InputSearh from "../components/InputSearh";
 import NotFound from "../components/NotFound";
 import BtnPramiry from "../components/buttons/BtnPramiry";
+import Modal from "../components/Modal";
 
 const Home = (props) => {
-  const { team, setTeam, styleTeam, people, setPeople, likedCardsIds, setLikedCardsIds } = props;
+  const {
+    team,
+    setTeam,
+    styleTeam,
+    people,
+    setPeople,
+    likedCardsIds,
+    setLikedCardsIds,
+    openModal,
+    setOpenModal,
+    dataHuman,
+    handleOpenModal,
+  } = props;
 
   const [visible, setVisible] = useState(false);
   const [isMorePeople, setIsMorePeople] = useState(false);
@@ -26,7 +39,7 @@ const Home = (props) => {
 
   const handleChangeTeam = () => {
     setTeam(!team);
-  }
+  };
 
   const handleLike = (cardId) => {
     if (likedCardsIds.includes(cardId)) {
@@ -95,55 +108,13 @@ const Home = (props) => {
   window.addEventListener("scroll", toggleVisible);
   const isFilteredPeople = filteredPeople.length === 0;
 
-  // const buttons = [
-  //   { name: "All", value: "All"},
-  //   { name: "Women", value: "Slow"},
-  //   { name: "Men", value: "Fast"},
-  // ]
-
-  // const [filteredPeopleSpeed, setFilteredPeopleSpeed] = useState(filteredPeople);
-
-  // const handleClickSpeed = (name) => {
-  //   console.log("huhuhu")
-  //   let filteredPeopleSpeed = [];
-
-  //   if(name === "All") {
-  //     filteredPeopleSpeed = filteredPeople;
-  //   } else {
-  //     filteredPeopleSpeed = filteredPeople.filter((human) => {
-  //       return human["speed"] === name;
-  //     });
-
-  //   }
-  //   setFilteredPeopleSpeed(filteredPeopleSpeed);
-  // };
-
-  //console.log(filteredPeopleSpeed)
-  //console.log(filteredPeople[1][speed])
-  //console.log(filteredPeopleSpeed)
-  //  console.log(People[0].id);
-  //  console.log(People[0].speed);
-  // console.log(People[0]['file-name']);
-
-const styleBtnAllHeartDisabled = team ? "btnAllHeart__light" : "btnAllHeart__dark";
-const styleBtnShowMore = team ? "btnShowMore__light" : "btnShowMore__dark";
+  const styleBtnAllHeartDisabled = team
+    ? "btnAllHeart__light"
+    : "btnAllHeart__dark";
+  const styleBtnShowMore = team ? "btnShowMore__light" : "btnShowMore__dark";
 
   return (
     <>
-      {/* {
-      buttons.map(({ name, value }) => {
-        return (
-          <button
-          key={name}
-          value={value}
-          className="btn btnBack" 
-          onClick={()=>{handleClickSpeed(name)}}
-        >
-          <span className="btnLikes">{name}</span>
-        </button>
-        )
-      })
-    } */}
       <h1 className="title">Nice to meet you</h1>
 
       <section className="menu">
@@ -171,9 +142,8 @@ const styleBtnShowMore = team ? "btnShowMore__light" : "btnShowMore__dark";
           className={`btn btnOrdinary ${styleTeam}`}
           onClick={handleChangeTeam}
         >
-          <span className="btnLikes">{ team ? "Dark" : "Light"}</span>
+          <span className="btnLikes">{team ? "Dark" : "Light"}</span>
         </BtnPramiry>
-
       </section>
 
       <section className="cardsBlock">
@@ -182,23 +152,25 @@ const styleBtnShowMore = team ? "btnShowMore__light" : "btnShowMore__dark";
         ) : (
           filteredPeople.slice(0, indexPeople).map((human) => {
             return (
-              <Card
-                key={human.cell}
-                id={human["id"]}
-                styleTeam={styleTeam}
-                setPeople={setPeople}
-                filteredPeople={filteredPeople}
-                likedCardsIds={likedCardsIds}
-                onLike={handleLike}
-                human={human}
-                name={human.name["first"]}
-                age={human.dob["age"]}
-                phone={human.cell}
-                email={human.email}
-                urlCardImg={human.picture["large"]}
-                incrementItem={incrementItem}
-                decreaseItem={decreaseItem}
-              />
+              <section key={human.cell}>
+                <Card
+                  id={human["id"]}
+                  styleTeam={styleTeam}
+                  setPeople={setPeople}
+                  filteredPeople={filteredPeople}
+                  likedCardsIds={likedCardsIds}
+                  onLike={handleLike}
+                  human={human}
+                  name={human.name["first"]}
+                  phone={human.cell}
+                  urlCardImg={human.picture["large"]}
+                  incrementItem={incrementItem}
+                  decreaseItem={decreaseItem}
+                  openModal={openModal}
+                  setOpenModal={setOpenModal}
+                  handleOpenModal={() => handleOpenModal(human)}
+                />
+              </section>
             );
           })
         )}
@@ -231,6 +203,13 @@ const styleBtnShowMore = team ? "btnShowMore__light" : "btnShowMore__dark";
             </BtnPramiry>
           )}
         </footer>
+      )}
+      {openModal && (
+        <Modal
+          active={openModal}
+          setActive={setOpenModal}
+          dataHuman={dataHuman}
+        />
       )}
     </>
   );

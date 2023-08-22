@@ -2,11 +2,11 @@ import React from "react";
 
 const CardMain = (props) => {
     
-    const { name, phone, urlCardImg } = props;
+    const { name, phone, urlCardImg, onClick } = props;
 
     return (
         <>
-            <img src={urlCardImg} className="cardImg" alt="#"></img>
+            <img src={urlCardImg} className="cardImg" alt="#" onClick={onClick}></img>
 
             <section className="cardBody">
                 <h4 className="cardTitle">{name}</h4>

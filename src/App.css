@@ -171,6 +171,7 @@ body {
 }
 
 .cardImg {
+  cursor: pointer;
   padding: 0 15px;
   width: 100%;
 }
@@ -250,7 +251,7 @@ body {
   outline: none;
   padding: 15px 40px 0 0;
   position: absolute;
-  z-index: 50;
+  z-index: 5;
   width: 1.5rem;
 }
 
@@ -281,14 +282,65 @@ body {
   width: 100%;
 }
 
+.modal {
+  align-items: center;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: 0.5s;
+  width: 100vw;
+  z-index: 10;
+}
+
+.modal__content {
+  background-color: #FFE2E2;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: fit-content;
+  padding: 30px;
+  position: absolute;
+  width: 25%;
+  min-width: 300px;
+}
+
+.modal__content__body {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.modalCardBodyText {
+  font-size: 14px;
+  font-family: roboto;
+  letter-spacing: .1rem;
+}
+
+.textWeight {
+  font-weight: 700;
+}
+
+.modal__cancelImg {
+  align-self: end;
+  cursor: pointer;
+  margin-top: -10px;
+}
+
+.modalCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1039px) {
   .cardsBlock {
     gap: 3%;
   }
-  
-  /* .card {
-    min-width: 230px;
-  } */
 }
 
 
@@ -362,3 +414,4 @@ input:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s eas
 input:focus::-moz-placeholder          {opacity: 0; transition: opacity 0.3s ease;}
 input:focus:-moz-placeholder           {opacity: 0; transition: opacity 0.3s ease;}
 input:focus:-ms-input-placeholder      {opacity: 0; transition: opacity 0.3s ease;}
+

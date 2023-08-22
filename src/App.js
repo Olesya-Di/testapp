@@ -9,6 +9,8 @@ const App = ({ team, setTeam }) => {
   
   const [people, setPeople] = useState([]);
   const [likedCardsIds, setLikedCardsIds] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
+  const [dataHuman, setDataHuman] = useState([]);
       
   useEffect(() => {
     
@@ -22,6 +24,11 @@ const App = ({ team, setTeam }) => {
   }, []);
 
   const styleTeam = team ? "team__light" : "team__dark";
+
+  const handleOpenModal = (data) => {
+    setOpenModal(true);
+    setDataHuman(data);
+  };
 
   return (
   <>
@@ -38,6 +45,10 @@ const App = ({ team, setTeam }) => {
               setPeople = {setPeople}
               likedCardsIds = {likedCardsIds}
               setLikedCardsIds = {setLikedCardsIds}
+              openModal={openModal}
+              setOpenModal={setOpenModal}
+              dataHuman={dataHuman}
+              handleOpenModal={handleOpenModal}
             />} />
             <Route path='/filter-likes-page' element = {<FilterLikesPage
               styleTeam = {styleTeam}
@@ -47,6 +58,10 @@ const App = ({ team, setTeam }) => {
               setPeople = {setPeople}
               likedCardsIds = {likedCardsIds}
               setLikedCardsIds = {setLikedCardsIds}
+              openModal={openModal}
+              setOpenModal={setOpenModal}
+              dataHuman={dataHuman}
+              handleOpenModal={handleOpenModal}
             />} />
           </Routes>
         </Router>    

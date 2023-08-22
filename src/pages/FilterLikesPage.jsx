@@ -3,9 +3,18 @@ import { useNavigate } from "react-router-dom";
 import CardMain from "../components/CardMain";
 import BtnPramiry from "../components/buttons/BtnPramiry";
 import NotFound from "../components/NotFound";
+import Modal from "../components/Modal";
 
 const FilterLikesPage = (props) => {
-  const { styleTeam, likedCardsIds, setLikedCardsIds } = props;
+  const {
+    styleTeam,
+    likedCardsIds,
+    setLikedCardsIds,
+    openModal,
+    setOpenModal,
+    dataHuman,
+    handleOpenModal,
+  } = props;
   const navigate = useNavigate();
 
   const clickBtnBack = () => {
@@ -34,20 +43,25 @@ const FilterLikesPage = (props) => {
         ) : (
           likedCardsIds.map((human) => {
             return (
-              <section 
-                className={`card ${styleTeam}`} 
-                key={human.cell}
-              >
+              <section className={`card ${styleTeam}`} key={human.cell}>
                 <CardMain
                   name={human.name["first"]}
                   phone={human.cell}
                   urlCardImg={human.picture["large"]}
+                  onClick={() => handleOpenModal(human)}
                 />
               </section>
             );
           })
         )}
       </section>
+      {openModal && (
+        <Modal
+          active={openModal}
+          setActive={setOpenModal}
+          dataHuman={dataHuman}
+        />
+      )}
     </>
   );
 };

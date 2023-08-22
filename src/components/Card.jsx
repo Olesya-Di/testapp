@@ -6,7 +6,7 @@ import BtnPramiry from "./buttons/BtnPramiry";
 
 const Card = (props) => {
 
-    const { styleTeam, human, setPeople, filteredPeople, onLike, id, name, age, phone, email, urlCardImg, incrementItem, decreaseItem } = props;
+    const { styleTeam, human, setPeople, filteredPeople, onLike, id, name, phone, urlCardImg, incrementItem, decreaseItem, handleOpenModal } = props;
 
     const [pressed, setPressed] = useState(false);
 
@@ -69,6 +69,7 @@ const Card = (props) => {
                     name={name}
                     phone={phone}
                     urlCardImg={urlCardImg}
+                    onClick={handleOpenModal}
                 />            
             </section>
         </>
